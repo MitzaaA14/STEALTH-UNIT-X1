@@ -1,53 +1,72 @@
-# Final Project: Disc-Delivery Rover
+# Final Project: Disc-Delivery Ecosystem (Rover + Scoring Gate + Multi-Interface Control)
 
-This repository contains the Final Project created for the Introduction to Robotics course during the 2025-2026 academic year at the Faculty of Mathematics and Informatics, University of Bucharest, Computer Science domain. Code, implementation, explanations, and extra resources (pictures, test results, videos) are all included in each checkpoint to document the complete development cycle of the robotic system.
+This repository contains the Final Project created for the **Introduction to Robotics** course during the 2025-2026 academic year at the Faculty of Mathematics and Informatics, University of Bucharest, Computer Science domain. 
 
- ## Team Members: 
+The project has evolved from a standalone rover into a **distributed mechatronic ecosystem** involving multiple ESP32 nodes communicating in real-time to provide a complete interactive experience.
+
+## ## Team Members: 
 - https://github.com/iulia1603
 - https://github.com/MitzaaA14
 
 ## Project General Description
 
-The "Disc-Delivery Rover" is an advanced mobile mechatronic platform designed for precision projectile deployment via wireless remote control. 
-The system utilizes an ESP32 microcontroller to manage Bluetooth communication and real-time hardware control.
-The robot features a differential drive chassis for high maneuverability and a dual-flywheel propulsion system for consistent projectile velocity. 
-A dedicated servo-driven "piston" mechanism handles the sequential feeding of ammunition.
-The robot is equipped with an on-board I2C LCD acting as a real-time diagnostic dashboard and a Piezo Buzzer for status notifications.
+The **Disc-Delivery Ecosystem** is an advanced robotic system designed for precision projectile deployment and automated scoring. The architecture is modular and supports three distinct control modes:
+
+1.  **The Rover:** A mobile platform with a dual-flywheel propulsion system. It features an **internal ammunition monitoring system** (ultrasonic) and a camera for target recognition.
+2.  **The Scoring Gate:** An autonomous target that detects successful hits via IR sensors and provides immediate visual feedback.
+3.  **The Control Hub (Hybrid Interface):**
+    * **Option A:** : A **PS5 DualSense Controller** for high-precision driving, paired with a stationary monitoring station.
+    * **Option B:** : A **Custom-Built ESP32 Controller/Station** featuring physical joysticks and a built-in LCD.
+    * **Option C:** : **Smartphone Control** via a web interface or app, displaying all live telemetry (ammo, score, sensor data) directly on the screen.
 
 ## B. Bill Of Materials (BOM)
 
-- Microcontroller: ESP32.
-- Locomotion: 2x DC Motors.
-- Propulsion: 2x DC High-Speed Motors (Flywheels).
-- Motor Interface: 1x L293D. 
-- Feeding Actuator: 1x Servo. 
-- Telemetry: 1x Ultrasonic Distance Sensor.
-- Visual Dashboard: LCD 16x2 with I2C Module (Mounted on robot for real-time telemetry).
-- Acoustic Feedback: Piezo Buzzer (Provides audio alerts for system states).
-- Power Supply: 2x LiPo Batteries (7.4V).
-- Control Interface: Any Bluetooth compatible Controller.
+### 1. The Rover (Action Node)
+- **Microcontroller:** ESP32 (Main Intelligence Hub).
+- **Locomotion:** 2x DC Motors + L293D Motor Driver.
+- **Propulsion:** 2x High-Speed DC Motors (Flywheels).
+- **Feeding Actuator:** 1x Servo Motor (Piston mechanism).
+- **Sensors:** - 1x Ultrasonic Sensor (Ammunition height measurement).
+    - 1x Camera Module (Target recognition and FPV).
+    - 1x Ultrasonic Sensor (Obstacle avoidance/Distance).
+- **Power Supply:** 2x LiPo Batteries (7.4V).
+
+### 2. The Scoring Gate (Target Node)
+- **Microcontroller:** ESP32.
+- **Sensor:** IR Beam Break Sensor / Infrared Proximity Sensor.
+- **Visual Feedback:** LED indicators for goal confirmation.
+
+### 3. The Command Node (Controller/Station)
+- **Microcontroller:** ESP32 (for Custom Station).
+- **Inputs:** 2x Analog Joysticks + Buttons.
+- **Visual Dashboard:** I2C LCD 16x2 (Score, Ammo Level, Status).
+- **Acoustic Feedback:** Piezo Buzzer (Low ammo/Goal alerts).
+- **Mobile Control:** Smartphone (iOS/Android) via WebServer/Bluetooth.
 
 ## Q1 - What is the system boundary? 
 
-The boundary is defined by the Bluetooth wireless link (input) and the projectile's kinetic exit (output). It encompasses the entire physical chassis, the electrical power management system, and the feedback interface (LCD/Buzzer).
+The boundary is defined by the **Wireless Command Link**. It encompasses the input interfaces (Phone, Custom or PS5 Controller), the Rover's internal sensors (Ammo, Camera, Distance), the Scoring Gate's detection logic, and the real-time data visualization on the chosen display.
 
 ## Q2 - Where does intelligence live? 
 
-Intelligence is embedded in the ESP32 Firmware. It processes asynchronous input, calculates PWM duty cycles for the L293D, manages the servo-feeder timing, and updates the diagnostic data on the LCD.
+Intelligence is centralized in the **Rover ESP32 Firmware**. It acts as the "Central Brain," processing asynchronous inputs, calculating PWM for locomotion, managing the servo-feeder timing, and running the target recognition logic. It also pushes telemetry data (ammo count, scoring updates) to the connected control interface.
 
 ## Q3 - What is the hardest technical problem? 
 
-The primary challenge is Power Rail Stability and Signal Integrity. DC motors create significant electrical noise and voltage drops that can cause the LCD to display corrupt characters or reset the I2C bus. Solving this requires hardware-level filtering (capacitors) and software-level error handling for the I2C communication.
+**Signal Integrity and Resource Monitoring.** Balancing high-current DC motor operation (which generates electrical noise) with stable wireless communication (Bluetooth/Wi-Fi) while simultaneously processing data from multiple sensors (Camera + 2x Ultrasonic) in real-time.
 
 ## Q4 - What is the minimum demo? 
 
-Navigating the robot wirelessly, viewing live distance data on the robot's LCD, hearing a confirmation from the buzzer, and launching a projectile successfully via the remote-controlled feeder.
+Navigating the rover via a smartphone or controller, checking live ammo levels on the screen, successfully firing a disc into the gate, and seeing the score update instantly on the mobile/LCD dashboard.
 
 ## Q5 - Why is this not just a tutorial? 
 
-This project requires the integration of real-time telemetry and multimodal feedback into a single system. Unlike a simple tutorial, this project involves building a system that monitors itself and reports critical data to the user via a physical dashboard and audio cues in real-time.
+This project demonstrates **Advanced System Integration**. It involves building a coordinated wireless network, implementing a custom telemetry protocol for resource management (Ammunition tracking), and integrating computer vision (Camera) with mechatronic actuators in a single distributed system.
 
 
-## Do you need an ESP32?
+## Technical Requirement: Why ESP32?
 
-YES. You cannot use an Arduino Uno. The ESP32 is required for its dual-core processing (handling Bluetooth and sensors on separate cores) and its on-board Bluetooth hardware.
+**YES.** The ESP32 is mandatory because: 
+1. **Dual-Core Architecture:** One core handles the wireless stacks (Web Server/Bluetooth) while the other manages motor control and sensor polling.
+2. **Connectivity:** Built-in Wi-Fi and Bluetooth are essential for the multi-interface control system (Phone/PS5).
+3. **Internal Storage & Speed:** Necessary for handling image data from the camera and the complex libraries required for modern HID controllers.
