@@ -4,7 +4,7 @@ This repository contains the Final Project created for the **Introduction to Rob
 
 The project has evolved from a standalone rover into a **distributed mechatronic ecosystem** involving multiple ESP32 nodes communicating in real-time to provide a complete interactive experience.
 
-## ## Team Members: 
+## Team Members: 
 - https://github.com/iulia1603
 - https://github.com/MitzaaA14
 
