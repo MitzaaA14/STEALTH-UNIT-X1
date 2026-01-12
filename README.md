@@ -9,7 +9,7 @@ This repository contains the Final Project created for the **Introduction to Rob
 
 ## Project General Description
 
-The **Disc-Delivery Ecosystem** is an advanced robotic system designed for precision projectile deployment and automated scoring. The architecture is modular and supports three distinct control modes:
+The **Disc-Delivery Ecosystem** is an advanced robotic system designed for precision projectile deployment and automated scoring. The architecture is **modular**, consisting of three interconnected components that communicate:
 
 1.  **The Rover:** A mobile platform with a dual-flywheel propulsion system. It features an **internal ammunition monitoring system** (ultrasonic) and a camera for target recognition.
 2.  **The Scoring Gate:** An autonomous target that detects successful hits via IR sensors and provides immediate visual feedback.
