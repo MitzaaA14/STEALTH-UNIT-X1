@@ -2,8 +2,6 @@
 
 This repository contains the Final Project created for the **Introduction to Robotics** course during the 2025-2026 academic year at the Faculty of Mathematics and Informatics, University of Bucharest, Computer Science domain. 
 
-The project has evolved from a standalone rover into a **distributed mechatronic ecosystem** involving multiple ESP32 nodes communicating in real-time to provide a complete interactive experience.
-
 ## Team Members: 
 - https://github.com/iulia1603
 - https://github.com/MitzaaA14
@@ -47,7 +45,7 @@ OPTION B:
 
 ## Q1 - What is the system boundary? 
 
-The boundary is defined by the **Wireless Command Link**. It encompasses the input interfaces (Phone, Custom or PS5 Controller), the Rover's internal sensors (Ammo, Camera, Distance), the Scoring Gate's detection logic, and the real-time data visualization on the chosen display.
+The boundary is defined by the **Wireless Command Link**. It includes the input interfaces (Phone, Custom or PS5 Controller), the Rover's internal sensors (Ammo, Camera, Distance), the Scoring Gate's detection logic, and the real-time data visualization on the chosen display.
 
 ## Q2 - Where does intelligence live? 
 
