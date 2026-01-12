@@ -1,4 +1,4 @@
-# Final Project: Disc-Delivery Ecosystem (Rover + Scoring Gate + Multi-Interface Control)
+# Final Project: Disc-Delivery Ecosystem 
 
 This repository contains the Final Project created for the **Introduction to Robotics** course during the 2025-2026 academic year at the Faculty of Mathematics and Informatics, University of Bucharest, Computer Science domain. 
 
@@ -27,8 +27,7 @@ The **Disc-Delivery Ecosystem** is an advanced robotic system designed for preci
 - **Propulsion:** 2x High-Speed DC Motors (Flywheels).
 - **Feeding Actuator:** 1x Servo Motor (Piston mechanism).
 - **Sensors:** - 1x Ultrasonic Sensor (Ammunition height measurement).
-    - 1x Camera Module (Target recognition and FPV).
-    - 1x Ultrasonic Sensor (Obstacle avoidance/Distance).
+               - 1x Ultrasonic Sensor (Distance feedback).
 - **Power Supply:** 2x LiPo Batteries (7.4V).
 
 ### 2. The Scoring Gate (Target Node)
@@ -53,7 +52,7 @@ Intelligence is centralized in the **Rover ESP32 Firmware**. It acts as the "Cen
 
 ## Q3 - What is the hardest technical problem? 
 
-**Signal Integrity and Resource Monitoring.** Balancing high-current DC motor operation (which generates electrical noise) with stable wireless communication (Bluetooth/Wi-Fi) while simultaneously processing data from multiple sensors (Camera + 2x Ultrasonic) in real-time.
+**Signal Integrity and Resource Monitoring.** Balancing high-current DC motor operation (which generates electrical noise) with stable wireless communication (Bluetooth/Wi-Fi) while simultaneously processing data from multiple sensors in real-time.
 
 ## Q4 - What is the minimum demo? 
 
@@ -61,7 +60,7 @@ Navigating the rover via a smartphone or controller, checking live ammo levels o
 
 ## Q5 - Why is this not just a tutorial? 
 
-This project demonstrates **Advanced System Integration**. It involves building a coordinated wireless network, implementing a custom telemetry protocol for resource management (Ammunition tracking), and integrating computer vision (Camera) with mechatronic actuators in a single distributed system.
+This project demonstrates **Advanced System Integration**. It involves building a coordinated wireless network, implementing a custom telemetry protocol for resource management (Ammunition tracking).
 
 
 ## Technical Requirement: Why ESP32?
@@ -69,4 +68,3 @@ This project demonstrates **Advanced System Integration**. It involves building 
 **YES.** The ESP32 is mandatory because: 
 1. **Dual-Core Architecture:** One core handles the wireless stacks (Web Server/Bluetooth) while the other manages motor control and sensor polling.
 2. **Connectivity:** Built-in Wi-Fi and Bluetooth are essential for the multi-interface control system (Phone/PS5).
-3. **Internal Storage & Speed:** Necessary for handling image data from the camera and the complex libraries required for modern HID controllers.
