@@ -15,9 +15,9 @@ The **Disc-Delivery Ecosystem** is an advanced robotic system designed for preci
 1.  **The Rover:** A mobile platform with a dual-flywheel propulsion system. It features an **internal ammunition monitoring system** (ultrasonic) and a camera for target recognition.
 2.  **The Scoring Gate:** An autonomous target that detects successful hits via IR sensors and provides immediate visual feedback.
 3.  **The Control Hub (Hybrid Interface):**
-    * **Option A:** : A **PS5 DualSense Controller** for high-precision driving, paired with a stationary monitoring station.
-    * **Option B:** : A **Custom-Built ESP32 Controller/Station** featuring physical joysticks and a built-in LCD.
-    * **Option C:** : **Smartphone Control** via a web interface or app, displaying all live telemetry (ammo, score, sensor data) directly on the screen.
+    * **Option A:**  A **PS5 DualSense Controller** for high-precision driving, paired with a stationary monitoring station.
+    * **Option B:** A **Custom-Built ESP32 Controller/Station** featuring physical joysticks and a built-in LCD.
+    * **Option C:** **Smartphone Control** via a web interface or app, displaying all live telemetry (ammo, score, sensor data) directly on the screen.
 
 ## B. Bill Of Materials (BOM)
 
