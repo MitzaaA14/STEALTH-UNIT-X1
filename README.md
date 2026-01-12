@@ -36,10 +36,13 @@ The **Disc-Delivery Ecosystem** is an advanced robotic system designed for preci
 - **Visual Feedback:** LED indicators for goal confirmation.
 
 ### 3. The Command Node (Controller/Station)
+OPTION A:
 - **Microcontroller:** ESP32 (for Custom Station).
 - **Inputs:** 2x Analog Joysticks + Buttons.
 - **Visual Dashboard:** I2C LCD 16x2 (Score, Ammo Level, Status).
 - **Acoustic Feedback:** Piezo Buzzer (Low ammo/Goal alerts).
+
+OPTION B:
 - **Mobile Control:** Smartphone (iOS/Android) via WebServer/Bluetooth.
 
 ## Q1 - What is the system boundary? 
