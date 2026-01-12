@@ -2,6 +2,10 @@
 
 This repository contains the Final Project created for the Introduction to Robotics course during the 2025-2026 academic year at the Faculty of Mathematics and Informatics, University of Bucharest, Computer Science domain. Code, implementation, explanations, and extra resources (pictures, test results, videos) are all included in each checkpoint to document the complete development cycle of the robotic system.
 
+ ## Team Members: 
+- https://github.com/iulia1603
+- https://github.com/MitzaaA14
+
 ## Project General Description
 
 The "Disc-Delivery Rover" is an advanced mobile mechatronic platform designed for precision projectile deployment via wireless remote control. 
