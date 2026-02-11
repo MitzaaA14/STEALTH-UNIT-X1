@@ -143,13 +143,34 @@ sensor polling.
 
 <details>
 <summary><h3>Photos</summary></h3>
+
+<details>
+<summary><h4>Motor Driver:</h4></summary> 
+<img width="667" height="637" alt="Screenshot 2026-02-11 at 23 14 59" src="https://github.com/user-attachments/assets/9a6342b0-9bc0-471e-9706-5ca1bd02c78a" />
+</details>
+
+<details>
+<summary><h4>Robot Chassis:</h4></summary> 
  
+<img width="388" height="329" alt="Screenshot 2026-02-11 at 23 15 16" src="https://github.com/user-attachments/assets/1a84e039-d43f-40c0-9e2e-9024f8faa732" />
+<img width="426" height="383" alt="Screenshot 2026-02-11 at 23 15 32" src="https://github.com/user-attachments/assets/993d65f7-b931-4613-8cf4-ba5f570d0e37" />
+
+</details>
+
+<details>
+ <summary><h4>Robot with 20AA Batteries:</h4></summary> 
+ <img width="426" height="402" alt="Screenshot 2026-02-11 at 23 15 46" src="https://github.com/user-attachments/assets/b09ebccf-06f1-4b39-9022-749727509304" />
+ 
+</details>
+
+<details>
+<summary><h4>Final Robot</h4></summary>
 <img width="404" height="458" alt="Screenshot 2026-02-11 at 23 03 02" src="https://github.com/user-attachments/assets/ecfce34c-dbc9-43a7-acc9-4e40e634e771" />
 <img width="427" height="618" alt="Screenshot 2026-02-11 at 23 03 35" src="https://github.com/user-attachments/assets/459b3833-aa36-4b44-91fc-4d0cb227b001" />
 <img width="427" height="618" alt="Screenshot 2026-02-11 at 23 03 28" src="https://github.com/user-attachments/assets/87b75462-936d-4a8f-9bac-9a2e041fc9b1" />
 <img width="427" height="525" alt="Screenshot 2026-02-11 at 23 03 20" src="https://github.com/user-attachments/assets/276bc0dd-7d9d-4c8a-aa74-1bd4d53d5143" />
 <img width="404" height="496" alt="Screenshot 2026-02-11 at 23 03 11" src="https://github.com/user-attachments/assets/8e6732bf-0838-4282-958c-3e0c35b7aec3" />
-
+</details>
 </details>
 
 <details>
