@@ -143,8 +143,20 @@ sensor polling.
 
 <details>
 <summary><h3>Photos</summary></h3>
+ 
+<img width="404" height="458" alt="Screenshot 2026-02-11 at 23 03 02" src="https://github.com/user-attachments/assets/ecfce34c-dbc9-43a7-acc9-4e40e634e771" />
+<img width="427" height="618" alt="Screenshot 2026-02-11 at 23 03 35" src="https://github.com/user-attachments/assets/459b3833-aa36-4b44-91fc-4d0cb227b001" />
+<img width="427" height="618" alt="Screenshot 2026-02-11 at 23 03 28" src="https://github.com/user-attachments/assets/87b75462-936d-4a8f-9bac-9a2e041fc9b1" />
+<img width="427" height="525" alt="Screenshot 2026-02-11 at 23 03 20" src="https://github.com/user-attachments/assets/276bc0dd-7d9d-4c8a-aa74-1bd4d53d5143" />
+<img width="404" height="496" alt="Screenshot 2026-02-11 at 23 03 11" src="https://github.com/user-attachments/assets/8e6732bf-0838-4282-958c-3e0c35b7aec3" />
+
 </details>
 
 <details>
 <summary><h3>Videos</summary></h3>
+ YouTube videos :
+
+ 1. https://youtu.be/38yWScA7Rz4?si=H7MG9lgyABFWA_h6
+ 2. https://youtu.be/lW564rpEUHY?si=BtgbWGYXQlxbuAaB
+    
 </details>
