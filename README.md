@@ -8,7 +8,8 @@ This repository contains the Final Project created for the **Introduction to Rob
 - https://github.com/MitzaaA14
 
 <details>
-<summary><h1>Project Description</summary></h1>
+<summary><h3>Project Description</summary></h3>
+
 ## Project General Description
 
  - STEALTH UNIT X1 is a modular robotic ecosystem designed for tactical movement and projectile deployment. 
@@ -18,19 +19,19 @@ This repository contains the Final Project created for the **Introduction to Rob
     
  - The robot is divided into two intelligent nodes to optimize power distribution and processing:
 
-        1. Master Node (The Rover): 
-            * Creates a Wi-Fi Access Point and hosts an interactive Web Dashboard.
+    1. Master Node (The Rover): 
+        - Creates a Wi-Fi Access Point and hosts an interactive Web Dashboard.
 
-            * Manages locomotion using dual DC motors.
+        - Manages locomotion using dual DC motors.
 
-            * Controls a Servo-based feeding mechanism.
+        - Controls a Servo-based feeding mechanism.
 
-            * Relays firing commands to the Slave unit.
+        - Relays firing commands to the Slave unit.
 
-        2. Slave Node (The Cannon): 
-            * Listens for encrypted ESP-NOW packets.
+    2. Slave Node (The Cannon): 
+        - Listens for encrypted ESP-NOW packets.
 
-            * Controls the high-speed dual-flywheel propulsion system for disc launching.
+        - Controls the high-speed dual-flywheel propulsion system for disc launching.
 
 ## B. Bill Of Materials (BOM)
 
@@ -49,11 +50,11 @@ This repository contains the Final Project created for the **Introduction to Rob
 
 The robot features a Tri-Hybrid Construction approach:
 
-    1. The Base: A standard 2WD Smart Car Chassis provides the structural integrity for the wheels and primary gearmotors.
+1. The Base: A standard 2WD Smart Car Chassis provides the structural integrity for the wheels and primary gearmotors.
 
-    2. The Hull: Custom-cut panels from Hobbycolor (Black PVC) were used to build the vertical structure. This allowed for a lightweight yet rigid "stealth" aesthetic.
+2. The Hull: Custom-cut panels from Hobbycolor (Black PVC) were used to build the vertical structure. This allowed for a lightweight yet rigid "stealth" aesthetic.
 
-    3. The Modules: 3D-printed modular housings were bolted to the PVC walls to securely hold the ESP32 boards and the complex flywheel launcher mechanism.
+3. The Modules: 3D-printed modular housings were bolted to the PVC walls to securely hold the ESP32 boards and the complex flywheel launcher mechanism.
 
 ## Q1 - What is the system boundary? 
 
@@ -84,16 +85,15 @@ Power Logic:
 - The system is powered by independent Li-Po sources to isolate 
 high-current draws:
 
-a. Locomotion Loop: * 7.4V Li-Po Battery -> L298N Motor Driver.
-    - The Driver's internal regulator provides 5V back to the Master 
-    ESP32.
+    a. Locomotion Loop: 7.4V Li-Po Battery -> L298N Motor Driver.
 
-b. Combat Loop (Cannon): * 7.4V Li-Po Battery -> L298N Motor Driver.
+        - The Driver's internal regulator provides 5V back to the Master ESP32.
 
-    - The Driver's internal regulator provides 5V back to the Slave 
-    ESP32.
+    b. Combat Loop (Cannon): 7.4V Li-Po Battery -> L298N Motor Driver.
 
-c. A Buck Converter is dedicated exclusively to the Servo Motor, ensuring it receives a stable voltage. Servo has an Li-Po Battery for itself.
+        - The Driver's internal regulator provides 5V back to the Slave ESP32.
+
+    c. A Buck Converter is dedicated exclusively to the Servo Motor, ensuring it receives a stable voltage. Servo has an Li-Po Battery for itself.
 
 ## Implementation Details
 Master-Slave Synchronization
@@ -122,6 +122,7 @@ sensor polling.
 <details>
 <summary><h3>Setup & Control</summary></h3>
 ## Setup Phase
+
     1. Power on the Rover and the Cannon modules.
 
     2. On your smartphone/tablet, connect to the Wi-Fi network: 
