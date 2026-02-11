@@ -12,7 +12,8 @@ This repository contains the Final Project created for the **Introduction to Rob
 
 ### Project General Description
 
- - STEALTH UNIT X1 is a modular robotic ecosystem designed for tactical movement and projectile deployment. 
+ - STEALTH UNIT X1 is a modular robotic ecosystem designed for tactical movement and projectile deployment -> A disc
+  
  - The system utilizes a Master-Slave architecture, where a mobile Rover (Master) hosts a Web Server for user control and communicates via the low-latency ESP-NOW protocol with a secondary Launcher unit (Slave).
 
 ### System Architecture
@@ -95,6 +96,28 @@ high-current draws:
 
     c. A Buck Converter is dedicated exclusively to the Servo Motor, ensuring it receives a stable voltage. Servo has an Li-Po Battery for itself.
 
+### Power Evolution: From AA to Li-Po
+
+During the initial prototyping phase, the system was powered by standard AA batteries. However, we quickly encountered significant performance issues that led to a complete redesign of the power delivery system:
+
+The Problem with AA Batteries:
+    
+    - Voltage Sag: When the flywheel motors started, the voltage would drop significantly (voltage sag), causing the ESP32 to brown out and reset.
+
+    - Low Discharge Rate: AA batteries could not provide the high instantaneous current (Amperage) required by the high-RPM launcher motors.
+
+    - Weight vs. Power: The weight of 6-8 AA batteries hindered the rover's agility without providing sufficient runtime.
+
+The Li-Po Solution:
+
+    - We switched to a triple Li-Po configuration (as detailed in the Power Distribution section). This provided:
+
+        - High C-Rating: Li-Po batteries handle high current bursts effortlessly, allowing the flywheels to reach maximum RPM in seconds.
+
+        - Consistent Voltage: With dedicated batteries for logic and motors, the ESP32 remains stable even during heavy combat sequences.
+
+Weight Efficiency: A significant reduction in weight while doubling the power output.
+
 ### Implementation Details
 Master-Slave Synchronization
 - The two ESP32 units communicate using the ESP-NOW protocol. This is a connectionless communication developed by Espressif that allows for near-instantaneous triggers.
@@ -108,6 +131,7 @@ Software Steering Calibration
 - Standard DC motors rarely spin at the exact same RPM. To ensure 
 STEALTH UNIT X1 moves in a straight line, we implemented a 
 software-side correction in the PWM mapping.
+
 
 ### Technical Requirement: Why ESP32?
 
