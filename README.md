@@ -13,7 +13,7 @@ This repository contains the Final Project created for the **Introduction to Rob
 ### Project General Description
 
  - STEALTH UNIT X1 is a modular robotic ecosystem designed for tactical movement and projectile deployment -> A disc
-  
+  <img width="643" height="449" alt="Screenshot 2026-02-11 at 23 21 17" src="https://github.com/user-attachments/assets/e7bd9b36-a01a-4870-b87e-0042eafd5ee8" />
  - The system utilizes a Master-Slave architecture, where a mobile Rover (Master) hosts a Web Server for user control and communicates via the low-latency ESP-NOW protocol with a secondary Launcher unit (Slave).
 
 ### System Architecture
