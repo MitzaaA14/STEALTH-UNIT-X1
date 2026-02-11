@@ -1,9 +1,9 @@
-### Final Project: Stealth Unit X1 
+## Final Project: Stealth Unit X1 
 
 This repository contains the Final Project created for the **Introduction to Robotics** course during the 2025-2026 academic year at the Faculty of Mathematics and Informatics, University of Bucharest, Computer Science domain. 
 
 
-#### Team Members: 
+### Team Members: 
 - https://github.com/iulia1603
 - https://github.com/MitzaaA14
 
