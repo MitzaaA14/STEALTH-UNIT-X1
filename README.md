@@ -1,21 +1,21 @@
-# Final Project: Stealth Unit X1 
+### Final Project: Stealth Unit X1 
 
 This repository contains the Final Project created for the **Introduction to Robotics** course during the 2025-2026 academic year at the Faculty of Mathematics and Informatics, University of Bucharest, Computer Science domain. 
 
 
-## Team Members: 
+#### Team Members: 
 - https://github.com/iulia1603
 - https://github.com/MitzaaA14
 
 <details>
 <summary><h3>Project Description</summary></h3>
 
-## Project General Description
+### Project General Description
 
  - STEALTH UNIT X1 is a modular robotic ecosystem designed for tactical movement and projectile deployment. 
  - The system utilizes a Master-Slave architecture, where a mobile Rover (Master) hosts a Web Server for user control and communicates via the low-latency ESP-NOW protocol with a secondary Launcher unit (Slave).
 
-## System Architecture
+### System Architecture
     
  - The robot is divided into two intelligent nodes to optimize power distribution and processing:
 
@@ -33,7 +33,7 @@ This repository contains the Final Project created for the **Introduction to Rob
 
         - Controls the high-speed dual-flywheel propulsion system for disc launching.
 
-## B. Bill Of Materials (BOM)
+### B. Bill Of Materials (BOM)
 
 - 2 x ESP32 DevKit V1 : Main Logic & Wireless Communication
 - 2 x L298N Motor Driver : Direction and speed control (H-Bridge)
@@ -46,7 +46,7 @@ This repository contains the Final Project created for the **Introduction to Rob
 - Hobbycolor (PVC) Plate - 1000x500x3mm - Custom-cut upper structural walls and mounting panels
 - Multiple 3D Printed Parts
 
-## Mechanical Design & Fabrication
+### Mechanical Design & Fabrication
 
 The robot features a Tri-Hybrid Construction approach:
 
@@ -56,27 +56,27 @@ The robot features a Tri-Hybrid Construction approach:
 
 3. The Modules: 3D-printed modular housings were bolted to the PVC walls to securely hold the ESP32 boards and the complex flywheel launcher mechanism.
 
-## Q1 - What is the system boundary? 
+### Q1 - What is the system boundary? 
 
 The boundary includes the user's mobile interface, the Wi-Fi control link, and the internal ESP-NOW telemetry between the Rover's chassis and the Cannon's firing logic.
 
-## Q2 - Where does intelligence live? 
+### Q2 - Where does intelligence live? 
 
 Intelligence is distributed. The Master node handles the UI and navigation logic, while the Slave node handles the high-speed execution timing for the launcher flywheels.
 
-## Q3 - What is the hardest technical problem? 
+### Q3 - What is the hardest technical problem? 
 
 Ensuring the 3D-printed launcher remained stable when mounted to the PVC walls, especially during the high-RPM spin-up of the flywheels.
 
-## Q4 - What is the minimum demo? 
+### Q4 - What is the minimum demo? 
 
 Powering the unit, connecting to the "STEALTH_UNIT_X1" network, and successfully navigating a course to fire a disc into a target using only the web dashboard.
 
-## Q5 - Why is this not just a tutorial? 
+### Q5 - Why is this not just a tutorial? 
 
 It combines pre-built robotics hardware (2WD Chassis) with custom fabrication (PVC cutting) and advanced wireless networking (ESP-NOW + WebServer) into a unique, integrated tactical system.
 
-## Power Distribution & Electronics
+### Power Distribution & Electronics
 The electrical architecture is designed to prevent voltage spikes 
 from the motors from interfering with the microcontrollers.
 
@@ -87,15 +87,15 @@ high-current draws:
 
     a. Locomotion Loop: 7.4V Li-Po Battery -> L298N Motor Driver.
 
-        - The Driver's internal regulator provides 5V back to the Master ESP32.
+    - The Driver's internal regulator provides 5V back to the Master ESP32.
 
     b. Combat Loop (Cannon): 7.4V Li-Po Battery -> L298N Motor Driver.
 
-        - The Driver's internal regulator provides 5V back to the Slave ESP32.
+    - The Driver's internal regulator provides 5V back to the Slave ESP32.
 
     c. A Buck Converter is dedicated exclusively to the Servo Motor, ensuring it receives a stable voltage. Servo has an Li-Po Battery for itself.
 
-## Implementation Details
+### Implementation Details
 Master-Slave Synchronization
 - The two ESP32 units communicate using the ESP-NOW protocol. This is a connectionless communication developed by Espressif that allows for near-instantaneous triggers.
 
@@ -109,7 +109,7 @@ Software Steering Calibration
 STEALTH UNIT X1 moves in a straight line, we implemented a 
 software-side correction in the PWM mapping.
 
-## Technical Requirement: Why ESP32?
+### Technical Requirement: Why ESP32?
 
 **YES.** The ESP32 is mandatory because: 
 1. **Dual-Core Architecture:** One core handles the wireless stacks 
@@ -121,7 +121,8 @@ sensor polling.
 
 <details>
 <summary><h3>Setup & Control</summary></h3>
-## Setup Phase
+
+### Setup Phase
 
     1. Power on the Rover and the Cannon modules.
 
@@ -130,7 +131,7 @@ sensor polling.
 
     3. Open a web browser and navigate to 192.168.4.1.
 
-## Controls
+### Controls
 | Action | Web Interface Button |
 |:---|:---|
 | **Move Forward/Back** | `Front` / `Down` |
