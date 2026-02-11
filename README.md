@@ -1,4 +1,4 @@
-# Final Project: Disc-Delivery Ecosystem 
+# Final Project: Stealth Unit X1 
 
 This repository contains the Final Project created for the **Introduction to Robotics** course during the 2025-2026 academic year at the Faculty of Mathematics and Informatics, University of Bucharest, Computer Science domain. 
 
@@ -7,66 +7,142 @@ This repository contains the Final Project created for the **Introduction to Rob
 - https://github.com/iulia1603
 - https://github.com/MitzaaA14
 
+<details>
+<summary><h1>Project Description</summary></h1>
 ## Project General Description
 
-The **Disc-Delivery Ecosystem** is an advanced robotic system designed for precision projectile deployment and automated scoring. The architecture is **modular**, consisting of three interconnected components that communicate:
+ - STEALTH UNIT X1 is a modular robotic ecosystem designed for tactical movement and projectile deployment. 
+ - The system utilizes a Master-Slave architecture, where a mobile Rover (Master) hosts a Web Server for user control and communicates via the low-latency ESP-NOW protocol with a secondary Launcher unit (Slave).
 
-1.  **The Rover:** A mobile platform with a dual-flywheel propulsion system. It features an **internal ammunition monitoring system** (ultrasonic) and a camera for target recognition.
-2.  **The Scoring Gate:** An autonomous target that detects successful hits via IR sensors and provides immediate visual feedback.
-3.  **The Control Hub (Hybrid Interface):**
-    * **Option A:**  A **PS5 DualSense Controller** for high-precision driving, paired with a stationary monitoring station.
-    * **Option B:** A **Custom-Built ESP32 Controller/Station** featuring physical joysticks and a built-in LCD.
-    * **Option C:** **Smartphone Control** via a web interface or app, displaying all live telemetry (ammo, score, sensor data) directly on the screen.
+## System Architecture
+    
+ - The robot is divided into two intelligent nodes to optimize power distribution and processing:
+
+        1. Master Node (The Rover): 
+            * Creates a Wi-Fi Access Point and hosts an interactive Web Dashboard.
+
+            * Manages locomotion using dual DC motors.
+
+            * Controls a Servo-based feeding mechanism.
+
+            * Relays firing commands to the Slave unit.
+
+        2. Slave Node (The Cannon): 
+            * Listens for encrypted ESP-NOW packets.
+
+            * Controls the high-speed dual-flywheel propulsion system for disc launching.
 
 ## B. Bill Of Materials (BOM)
 
-### 1. The Rover (Action Node)
-- **Microcontroller:** ESP32 (Main Intelligence Hub).
-- **Locomotion:** 2x DC Motors + L293D Motor Driver.
-- **Propulsion:** 2x High-Speed DC Motors (Flywheels).
-- **Feeding Actuator:** 1x Servo Motor (Piston mechanism).
-- **Sensors:** - 1x Ultrasonic Sensor (Ammunition height measurement).
-               - 1x Ultrasonic Sensor (Distance feedback).
-- **Power Supply:** 2x LiPo Batteries (7.4V).
+- 2 x ESP32 DevKit V1 : Main Logic & Wireless Communication
+- 2 x L298N Motor Driver : Direction and speed control (H-Bridge)
+- 2 x DC Motors : Primary movement (Locomotion)
+- 2 x DC Motors : Flywheel propulsion for disc launching
+- 1 x Servo Motor : Magazine feeding piston (90° toggle)
+- 1 x Buck Converter : Voltage regulation for Servo
+- 3 x 7.4V Li-Po Battery : High-current power source
+- 1 x Smart Car Chassis 2WD : Modular housing
+- Hobbycolor (PVC) Plate - 1000x500x3mm - Custom-cut upper structural walls and mounting panels
+- Multiple 3D Printed Parts
 
-### 2. The Scoring Gate (Target Node)
-- **Microcontroller:** ESP32.
-- **Sensor:** IR Beam Break Sensor / Infrared Proximity Sensor.
-- **Visual Feedback:** LED indicators for goal confirmation.
+## Mechanical Design & Fabrication
 
-### 3. The Command Node (Controller/Station)
-OPTION A:
-- **Microcontroller:** ESP32 (for Custom Station).
-- **Inputs:** 2x Analog Joysticks + Buttons.
-- **Visual Dashboard:** I2C LCD 16x2 (Score, Ammo Level, Status).
-- **Acoustic Feedback:** Piezo Buzzer (Low ammo/Goal alerts).
+The robot features a Tri-Hybrid Construction approach:
 
-OPTION B:
-- **Mobile Control:** Smartphone (iOS/Android) via WebServer/Bluetooth.
+    1. The Base: A standard 2WD Smart Car Chassis provides the structural integrity for the wheels and primary gearmotors.
+
+    2. The Hull: Custom-cut panels from Hobbycolor (Black PVC) were used to build the vertical structure. This allowed for a lightweight yet rigid "stealth" aesthetic.
+
+    3. The Modules: 3D-printed modular housings were bolted to the PVC walls to securely hold the ESP32 boards and the complex flywheel launcher mechanism.
 
 ## Q1 - What is the system boundary? 
 
-The boundary is defined by the **Wireless Command Link**. It includes the input interfaces (Phone, Custom or PS5 Controller), the Rover's internal sensors (Ammo, Camera, Distance), the Scoring Gate's detection logic, and the real-time data visualization on the chosen display.
+The boundary includes the user's mobile interface, the Wi-Fi control link, and the internal ESP-NOW telemetry between the Rover's chassis and the Cannon's firing logic.
 
 ## Q2 - Where does intelligence live? 
 
-Intelligence is centralized in the **Rover ESP32 Firmware**. It acts as the "Central Brain," processing asynchronous inputs, calculating PWM for locomotion, managing the servo-feeder timing, and running the target recognition logic. It also pushes telemetry data (ammo count, scoring updates) to the connected control interface.
+Intelligence is distributed. The Master node handles the UI and navigation logic, while the Slave node handles the high-speed execution timing for the launcher flywheels.
 
 ## Q3 - What is the hardest technical problem? 
 
-**Signal Integrity and Resource Monitoring.** Balancing high-current DC motor operation (which generates electrical noise) with stable wireless communication (Bluetooth/Wi-Fi) while simultaneously processing data from multiple sensors in real-time.
+Ensuring the 3D-printed launcher remained stable when mounted to the PVC walls, especially during the high-RPM spin-up of the flywheels.
 
 ## Q4 - What is the minimum demo? 
 
-Navigating the rover via a smartphone or controller, checking live ammo levels on the screen, successfully firing a disc into the gate, and seeing the score update instantly on the mobile/LCD dashboard.
+Powering the unit, connecting to the "STEALTH_UNIT_X1" network, and successfully navigating a course to fire a disc into a target using only the web dashboard.
 
 ## Q5 - Why is this not just a tutorial? 
 
-This project demonstrates **Advanced System Integration**. It involves building a coordinated wireless network, implementing a custom telemetry protocol for resource management (Ammunition tracking).
+It combines pre-built robotics hardware (2WD Chassis) with custom fabrication (PVC cutting) and advanced wireless networking (ESP-NOW + WebServer) into a unique, integrated tactical system.
 
+## Power Distribution & Electronics
+The electrical architecture is designed to prevent voltage spikes 
+from the motors from interfering with the microcontrollers.
+
+Power Logic:
+
+- The system is powered by independent Li-Po sources to isolate 
+high-current draws:
+
+a. Locomotion Loop: * 7.4V Li-Po Battery -> L298N Motor Driver.
+    - The Driver's internal regulator provides 5V back to the Master 
+    ESP32.
+
+b. Combat Loop (Cannon): * 7.4V Li-Po Battery -> L298N Motor Driver.
+
+    - The Driver's internal regulator provides 5V back to the Slave 
+    ESP32.
+
+c. A Buck Converter is dedicated exclusively to the Servo Motor, ensuring it receives a stable voltage. Servo has an Li-Po Battery for itself.
+
+## Implementation Details
+Master-Slave Synchronization
+- The two ESP32 units communicate using the ESP-NOW protocol. This is a connectionless communication developed by Espressif that allows for near-instantaneous triggers.
+
+Latency: <10ms (Ideal for a firing mechanism).
+
+Reliability: The Slave unit is hardcoded to respond only to the Master's unique MAC address.
+
+Software Steering Calibration
+
+- Standard DC motors rarely spin at the exact same RPM. To ensure 
+STEALTH UNIT X1 moves in a straight line, we implemented a 
+software-side correction in the PWM mapping.
 
 ## Technical Requirement: Why ESP32?
 
 **YES.** The ESP32 is mandatory because: 
-1. **Dual-Core Architecture:** One core handles the wireless stacks (Web Server/Bluetooth) while the other manages motor control and sensor polling.
+1. **Dual-Core Architecture:** One core handles the wireless stacks 
+(Web Server/Bluetooth) while the other manages motor control and 
+sensor polling.
 2. **Connectivity:** Built-in Wi-Fi and Bluetooth are essential for the multi-interface control system (Phone/PS5).
+
+</details>
+
+<details>
+<summary><h3>Setup & Control</summary></h3>
+## Setup Phase
+    1. Power on the Rover and the Cannon modules.
+
+    2. On your smartphone/tablet, connect to the Wi-Fi network: 
+    "STEALTH_UNIT_X1" (Password: 12345678).
+
+    3. Open a web browser and navigate to 192.168.4.1.
+
+## Controls
+| Action | Web Interface Button |
+|:---|:---|
+| **Move Forward/Back** | `Front` / `Down` |
+| **Steer Left/Right** | `Left` / `Right` |
+| **Load/Reset Piston** | `Toggle Servo (90°)` |
+| **Launch Disc** | **`ENGAGE CANNON`** |
+| **Stop/Safety** | `Disarm / Stop Fire` |
+</details>
+
+<details>
+<summary><h3>Photos</summary></h3>
+</details>
+
+<details>
+<summary><h3>Videos</summary></h3>
+</details>
